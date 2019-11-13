@@ -1,0 +1,13 @@
+<h1>Edit Show</h1>
+<form method="POST" action="/shows/<%= @show.id %>">
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
+  <label>Show Name: <input type="text" name="show[name]" value="<%= @show.name %>"></label>
+  <br>
+  <label>Number Of Episodes: <input type="number" name="show[episodes]" value="<%= @show.episodes%>"></label>
+  <br>
+  <label>Number Of Episodes Seen: <input type="number" name="show[episodes_watched]" value="<%= @show.episodes_watched %>"></label>
+  <br>
+  <label>Rating (From 1 to 10): <input type="number" name="show[rating]" min="1" max="10" value="<%= @show.rating %>"></label>
+  <br>
+  <input type="submit" value="Update Show">
+</form>

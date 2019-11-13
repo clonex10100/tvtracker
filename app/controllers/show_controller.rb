@@ -13,4 +13,20 @@ class ShowController < ApplicationController
     @show.save
     redirect "/users/#{Helpers.current_user(session).slug}"
   end
+
+  get '/shows/:id' do
+    @show = Show.find(params[:id])
+    erb :'shows/show'
+  end
+
+  get '/shows/:id/edit' do
+    @show = Show.find(params[:id])
+    erb :'shows/edit'
+  end
+
+  patch '/shows/:id' do
+    @show = Show.find(params[:id])
+    @show.update(params[:show])
+    redirect "/shows/#{@show.id}"
+  end
 end
