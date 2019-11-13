@@ -1,0 +1,14 @@
+<h1>Create A new tag</h1>
+<form method="POST" action="/tags">
+  <label>Tag Name: <input type="text" name="tag[name]"></label>
+  <br>
+  <!--Replace with dropdown-->
+  <label>Tag Color: <input type="color" name="tag[color]"></label>
+  <br>
+  <h3>Tag Shows With This Tag</h3>
+  <% @shows.each do |show| %>
+    <label><input type="checkbox" name="tag[show_ids][]" value="<%= show.id %>"><%= show.name %></label>
+    <br>
+  <% end %>
+  <input type="submit" value="Create Tag">
+</form>
