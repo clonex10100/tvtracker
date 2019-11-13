@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   has_secure_password
   has_many :shows
-  has_many :tags, through: :shows
+  has_many :tags
 end
