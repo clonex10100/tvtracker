@@ -13,9 +13,17 @@ class ApplicationController < Sinatra::Base
     if Helpers.is_logged_in?(session)
       @id = session[:id]
       @user = Helpers.current_user(session)
-      erb :index
+      erb :index_logged_in
     else
-      "<a href=\"/login\"><h1>Please Login</h1></a>"
+      erb :index
     end
+  end
+
+  get '/account' do
+    unless Helpers.is_logged_in?(session)
+      flash[:message] = "You must be logged in to access this page"
+      redirect "/login"
+    end
+    redirect "/users/#{Helpers.current_user(session).slug}"
   end
 end
