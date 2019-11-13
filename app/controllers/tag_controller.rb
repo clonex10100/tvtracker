@@ -25,13 +25,8 @@ class TagController < ApplicationController
 
   get '/tags/:id' do
     @tag = Tag.find(params[:id])
-    if @tag.user.id == session[:id]
-      @shows = @tag.shows
-      erb :'tags/show'
-    else
-      flash[:message] = "You must be logged in to access this page"
-      redirect "/login"
-    end
+    @shows = @tag.shows
+    erb :'tags/show'
   end
 
   get '/tags/:id/edit' do
