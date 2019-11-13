@@ -20,7 +20,18 @@ class TagController < ApplicationController
       redirect "/login"
     end
     @tags = Helpers.current_user(session).tags
-    erb :'tags/show'
+    erb :'tags/index'
+  end
+
+  get '/tags/:id' do
+    @tag = Tag.find(params[:id])
+    if @tag.user.id == session[:id]
+      @shows = @tag.shows
+      erb :'tags/show'
+    else
+      flash[:message] = "You must be logged in to access this page"
+      redirect "/login"
+    end
   end
 
   get '/tags/:id/edit' do

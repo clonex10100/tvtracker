@@ -4,11 +4,10 @@
     <h3><%= show.name %></h3>
     <p>Episodes: <%= show.episodes_watched %>/<%= show.episodes %></p>
     <p>Rating: <%= show.rating %>/10</p>
-    <ul>
+    <p>Tags: </p>
       <% show.tags.each do |tag| %>
-        <li><%= tag.name %></li>
+        <p style="background: <%= tag.color %>; border: solid;"><%= tag.name %></p>
       <% end %>
-    </ul>
     <a href="/shows/<%= show.id %>/edit">Edit Show</a>
   </section>
 <% end %>

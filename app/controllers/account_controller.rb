@@ -22,7 +22,7 @@ class AccountController < ApplicationController
     end
   end
 
-  get '/login' do 
+  get '/login' do
     if Helpers.is_logged_in?(session)
       flash[:message] = "You're already logged in"
       redirect '/'
