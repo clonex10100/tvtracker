@@ -1,0 +1,14 @@
+<h1>Edit Tag</h1>
+<form method="POST" action="/tags/<%= @tag.id %>">
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
+  <label>Tag Name: <input type="text" name="tag[name]" value="<%= @tag.name %>"></label>
+  <br>
+  <label>Tag Color: <input type="color" name="tag[color]" value="<%= @tag.color %>"></label>
+  <br>
+  <h3>Tag Shows With This Tag</h3>
+  <% @shows.each do |show| %>
+    <label><input type="checkbox" name="tag[show_ids][]" value="<%= show.id %>" <%= 'checked' if @tag.shows.include?(show) %>><%= show.name %></label>
+    <br>
+  <% end %>
+  <input type="submit" value="Edit Tag">
+</form>

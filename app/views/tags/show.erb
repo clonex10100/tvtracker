@@ -1,0 +1,10 @@
+<h1>Your Tags</h1>
+<% @tags.each do |tag| %>
+  <h3 style="color: <%= tag.color %>"><%= tag.name %></h3>
+  <ul>
+  <% tag.shows.each do |show|%>
+    <li>show.name</li>
+  <% end %>
+  </ul>
+  <a href="/tags/<%= tag.id %>/edit">Edit</a>
+<% end %>
