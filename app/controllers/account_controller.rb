@@ -1,10 +1,10 @@
 class AccountController < ApplicationController
   get '/success' do
-    erb :success
+    erb :'account/success'
   end
 
   get '/signup' do
-    erb :signup
+    erb :'account/signup'
   end
 
   post '/signup' do
@@ -19,7 +19,7 @@ class AccountController < ApplicationController
   end
 
   get '/login' do 
-    erb :login
+    erb :'account/login'
   end
 
   post '/login' do
