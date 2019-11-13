@@ -1,12 +1,11 @@
 class UserController < ApplicationController
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
-    if Helpers.is_logged_in?(session)
-      @shows = @user.shows
-      #binding.pry
-      erb :'users/show'
+    @shows = @user.shows
+    if @user.id == session[:id]
+      erb :'users/show_logged_in'
     else
-      "Not Logged In"
+      erb :'users/show'
     end
   end
 end

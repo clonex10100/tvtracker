@@ -4,6 +4,10 @@ class AccountController < ApplicationController
   end
 
   get '/signup' do
+    if Helpers.is_logged_in?(session)
+      flash[:message] = "You're already logged in"
+      redirect '/'
+    end
     erb :'account/signup'
   end
 
@@ -19,6 +23,10 @@ class AccountController < ApplicationController
   end
 
   get '/login' do 
+    if Helpers.is_logged_in?(session)
+      flash[:message] = "You're already logged in"
+      redirect '/'
+    end
     erb :'account/login'
   end
 
