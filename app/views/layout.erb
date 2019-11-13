@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>TVtracker</title>
+    <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+  </head>
+  <body>
+  <% if flash.has?(:message) %>
+    <%= flash[:message] %>
+  <% end %>
+  <div class="content">
+    <%= yield %>
+  </div>
+  </body>
+</html>
