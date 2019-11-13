@@ -1,0 +1,14 @@
+main {
+    width: 80%;
+    margin: auto;
+    background: grey;
+}
+
+section.show {
+    background: white;
+    margin: 1em 2em;
+}
+
+section.show * {
+    display: inline-block;
+}
