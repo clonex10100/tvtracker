@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_015204) do
+ActiveRecord::Schema.define(version: 2019_11_13_003501) do
+
+  create_table "shows", force: :cascade do |t|
+    t.string "name"
+    t.integer "episodes"
+    t.integer "episodes_watched"
+    t.integer "rating"
+    t.string "user_id"
+  end
 
   create_table "test", force: :cascade do |t|
     t.string "ping"
