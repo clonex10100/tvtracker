@@ -10,40 +10,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    @id = session[:id]
-    erb :index
-  end
-
-  get '/success' do
-    erb :success
-  end
-
-  get '/signup' do
-    erb :signup
-  end
-
-  post '/signup' do
-    @user = User.create(params[:user])
-    session[:id] = @user.id
-    redirect "/users/#{@user.id}"
-  end
-
-  get '/login' do 
-    erb :login
-  end
-  post '/login' do
-    user = User.find_by(name: params[:user][:name])
-    if user && user.authenticate(params[:user][:password])
-      session[:user_id] = user.id
-      redirect "/success"
+    if Helpers.is_logged_in?(session)
+      @id = session[:id]
+      @user = Helpers.current_user(session)
+      erb :index
     else
-      flash[:message] = "Username or password not correct"
-      redirect "/login"
+      "<a href=\"/login\"><h1>Please Login</h1></a>"
     end
-  end
-
-  post '/logout' do
-    session.clear
-    redirect '/'
   end
 end

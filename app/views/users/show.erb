@@ -1,1 +1,7 @@
-<h1><%=@user.name%></h1>
+<h1><%= @user.name %></h1>
+<% @shows.each do |show| %>
+  <h3><%= show.name %></h3>
+  <p><%= show.episodes %>/<%= show.episodes_watched %></p>
+  <p><%= show.rating %>/10</p>
+  <a href="/shows/<%= show.slug %>/edit">Edit Show</a>
+<% end %>
