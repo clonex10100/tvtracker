@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_214856) do
+ActiveRecord::Schema.define(version: 2019_11_14_013427) do
+
+  create_table "catagories", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.integer "user_id"
+  end
 
   create_table "show_tags", force: :cascade do |t|
     t.integer "show_id"
@@ -22,17 +28,14 @@ ActiveRecord::Schema.define(version: 2019_11_13_214856) do
     t.integer "episodes"
     t.integer "episodes_watched"
     t.integer "rating"
-    t.string "user_id"
+    t.integer "user_id"
+    t.integer "catagory_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.string "color"
     t.integer "user_id"
-  end
-
-  create_table "test", force: :cascade do |t|
-    t.string "ping"
   end
 
   create_table "users", force: :cascade do |t|
