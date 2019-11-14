@@ -8,10 +8,12 @@
     <% if show.category %>
       <p>Category: </p><a href="/categories/<%= show.category.id %>"><p style="border: solid;"><%= show.category.name %></p></a>
     <% end %>
-    <p>Tags: </p>
-      <% show.tags.each do |tag| %>
-        <a href="/tags/<%= tag.id %>"><p style="background: <%= tag.color %>; border: solid;"><%= tag.name %></p></a>
-      <% end %>
+    <% unless show.tags.empty? %>
+      <p>Tags: </p>
+        <% show.tags.each do |tag| %>
+          <a href="/tags/<%= tag.id %>"><p style="background: <%= tag.color %>; border: solid;"><%= tag.name %></p></a>
+        <% end %>
+    <% end %>
     </div>
       <% if @acc %>
         <a href="/shows/<%= show.id %>/edit" class="edit">Edit Show</a>
@@ -20,5 +22,5 @@
   </section>
 <% end %>
 <% if @acc %>
-  <a href="/categories/<%= @category.id %>/edit">Edit category</a>
+  <a href="/categories/<%= @category.id %>/edit"><h3>Edit category</h3></a>
 <% end %>

@@ -1,16 +1,17 @@
 <h1>Your Categories</h1>
 <% @categories.each do |category| %>
-  <section style="background: <%=category.color%>">
-    <div class="text">
-      <h3><%= category.name %></h3>
+  <div class="text">
+  <h3 style="color: <%=category.color%>"><%= category.name %></h3>
       <% unless category.shows.empty? %>
-        <p>Shows: </p>
+        <h4>Shows:</h4>
+        <ul>
+          <% category.shows.each do |show|%>
+            <li><%= show.name %></li>
+          <% end %>
+        </ul>
       <% end %>
-      <% category.shows.each do |show|%>
-        <p class="show"><%= show.name %></p>
-      <% end %>
+      <a href="/categories/<%= category.id %>" class="edit">View</a>
       <a href="/categories/<%= category.id %>/edit" class="edit">Edit</a>
       <a href="/categories/<%= category.id %>/delete" class="edit">Delete</a>
-    </div>
-  </section>
+  </div>
 <% end %>

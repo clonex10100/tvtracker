@@ -10,7 +10,7 @@ main {
     border-width: 1px;
 }
 
-h1, h3, p {
+h1, h3, h4, p {
     color: #657b83;
 }
 
@@ -26,7 +26,7 @@ div.text {
     border-color: #657b83;
 }
 
-div.text a.edit {
+a.edit {
     border: solid;
     border-color: #657b83;
     background-color: #268bd2;
@@ -37,6 +37,7 @@ h1 {
     text-align: center;
 }
 
+/*Show Entry Styling*/
 section {
     background: white;
     margin: 1em 2em;
@@ -46,7 +47,7 @@ section {
 section * {
     display: inline-block;
 }
-
+/*Navbar Styling*/
 nav {
     background-color: #eee8d5;
 	line-height: 420%;
