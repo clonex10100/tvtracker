@@ -1,8 +1,4 @@
 class AccountController < ApplicationController
-  get '/success' do
-    erb :'account/success'
-  end
-
   get '/signup' do
     if Helpers.is_logged_in?(session)
       flash[:message] = "You're already logged in"
