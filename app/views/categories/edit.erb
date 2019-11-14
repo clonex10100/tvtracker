@@ -5,6 +5,8 @@
   <br>
   <label>category Color: <input type="color" name="category[color]" value="<%= @category.color %>"></label>
   <br>
+  <label>Category Sort Priority: <input type="number" min="1" max="10" name="category[priority]" value="<%= @category.priority %>"></label>
+  <br>
   <h3>Shows With This category</h3>
   <% @shows.each do |show| %>
     <label><input type="checkbox" name="category[show_ids][]" value="<%= show.id %>" <%= 'checked' if @category.shows.include?(show) %>><%= show.name %></label>

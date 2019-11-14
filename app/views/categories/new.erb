@@ -3,6 +3,8 @@
   <label>Category Name: <input type="text" name="category[name]"></label>
   <br>
   <label>Category Color: <input type="color" name="category[color]"></label>
+  <br>
+  <label>Category Sort Priority: <input type="number" min="1" max="10" name="category[priority]"></label>
   <h3>Add Shows to category</h3>
   <% @shows.each do |show| %>
     <label><input type="checkbox" value="<%= show.id %>" name="category[show_ids][]"><%= show.name %></label>

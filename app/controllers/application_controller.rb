@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
   set :views, Proc.new { File.join(root, "../views/") }
   use Rack::Flash
 
-  configure do 
+  configure do
     enable :sessions
     set :session_secret, "secret"
   end

@@ -1,12 +1,12 @@
 <h1><%= @category.name %></h1>
-<% @shows.each do |show| %>
+<% @shows.sort { |a, b| a.category.priority <=> b.category.priority }.each do |show| %>
   <section class="show" style="background: <%= show.category ? show.category.color : 'white' %>">
     <div class="text">
     <h3><%= show.name %></h3>
     <p>Episodes: <%= show.episodes_watched %>/<%= show.episodes %></p>
     <p>Rating: <%= show.rating %>/10</p>
     <% if show.category %>
-      <p>Category: </p><a href="/categories/<%= show.category.id %>"><p style="border: solid;"><%= show.category.name %></p></a>
+      <p>Category: </p><a href="/categories/<%= show.category.id %>"><p style="border: solid;"><%= show.category.name %> - PR:<%= show.category.priority %></p></a>
     <% end %>
     <% unless show.tags.empty? %>
       <p>Tags: </p>

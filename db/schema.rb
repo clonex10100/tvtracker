@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_013427) do
     t.string "name"
     t.string "color"
     t.integer "user_id"
+    t.integer "priority"
   end
 
   create_table "show_tags", force: :cascade do |t|

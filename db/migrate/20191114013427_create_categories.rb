@@ -4,6 +4,7 @@ class CreateCategories < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :color
       t.integer :user_id
+      t.integer :priority
     end
   end
 end
