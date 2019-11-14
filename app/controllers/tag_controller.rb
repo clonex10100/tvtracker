@@ -1,4 +1,5 @@
 class TagController < ApplicationController
+  #add a tag
   get '/tags/new' do
     unless Helpers.is_logged_in?(session)
       flash[:message] = "You must be logged in to access this page"
@@ -15,30 +16,7 @@ class TagController < ApplicationController
     redirect '/'
   end
 
-  get '/tags' do
-    unless Helpers.is_logged_in?(session)
-      flash[:message] = "You must be logged in to access this page"
-      redirect "/login"
-    end
-    @tags = Helpers.current_user(session).tags
-    erb :'tags/index'
-  end
-
-  get '/tags/:id' do
-    @tag = Tag.find(params[:id])
-    @shows = @tag.shows
-    @acc = @tag.user.id == session[:id]
-    erb :'tags/show'
-  end
-
-  get '/tags/:id/delete' do
-
-    tag = Tag.find(params[:id])
-    if tag.user.id == session[:id]
-      tag.delete
-    end
-    redirect '/tags'
-  end
+  #Edit a tag
   get '/tags/:id/edit' do
     @tag = Tag.find(params[:id])
     if @tag.user.id == session[:id]
@@ -58,5 +36,32 @@ class TagController < ApplicationController
       @tag.save
     end
     redirect '/tags'
+  end
+
+  #Delete a tag
+  get '/tags/:id/delete' do
+    tag = Tag.find(params[:id])
+    if tag.user.id == session[:id]
+      tag.delete
+    end
+    redirect '/tags'
+  end
+
+  #Display all of the current users tags
+  get '/tags' do
+    unless Helpers.is_logged_in?(session)
+      flash[:message] = "You must be logged in to access this page"
+      redirect "/login"
+    end
+    @tags = Helpers.current_user(session).tags
+    erb :'tags/index'
+  end
+
+  #Display a tag and all of it's shows
+  get '/tags/:id' do
+    @tag = Tag.find(params[:id])
+    @shows = @tag.shows
+    @acc = @tag.user.id == session[:id]
+    erb :'tags/show'
   end
 end

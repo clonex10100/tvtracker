@@ -1,4 +1,5 @@
 class ShowController < ApplicationController
+  #Add new show
   get '/shows/new' do
     unless Helpers.is_logged_in?(session)
       flash[:message] = "You must be logged in to access this page"
@@ -25,6 +26,7 @@ class ShowController < ApplicationController
     redirect "/users/#{Helpers.current_user(session).slug}"
   end
 
+  #Edit a show
   get '/shows/:id/edit' do
     @show = Show.find(params[:id])
     if @show.user.id == session[:id]
@@ -52,6 +54,8 @@ class ShowController < ApplicationController
     end
     redirect "/account"
   end
+
+  #Delete a show
   get '/shows/:id/delete' do
     show = Show.find(params[:id])
     if show.user.id == session[:id]
