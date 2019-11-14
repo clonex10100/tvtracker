@@ -1,10 +1,16 @@
 <h1>Your Tags</h1>
 <% @tags.each do |tag| %>
-  <h3 style="color: <%= tag.color %>"><%= tag.name %></h3>
-  <ul>
-  <% tag.shows.each do |show|%>
-    <li>show.name</li>
-  <% end %>
-  </ul>
-  <a href="/tags/<%= tag.id %>/edit">Edit</a>
+  <section style="background: <%=tag.color%>">
+    <div class="text">
+      <h3><%= tag.name %></h3>
+      <% unless tag.shows.empty? %>
+        <p>Shows: </p>
+      <% end %>
+      <% tag.shows.each do |show|%>
+        <p class="show"><%= show.name %></p>
+      <% end %>
+      <a href="/tags/<%= tag.id %>/edit" class="edit">Edit</a>
+      <a href="/tags/<%= tag.id %>/delete" class="edit">Delete</a>
+    </div>
+  </section>
 <% end %>

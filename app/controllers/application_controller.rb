@@ -11,9 +11,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if Helpers.is_logged_in?(session)
-      @id = session[:id]
-      @user = Helpers.current_user(session)
-      erb :index_logged_in
+      redirect '/account'
     else
       erb :index
     end

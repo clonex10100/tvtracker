@@ -1,13 +1,20 @@
 <h1><%= @tag.name %></h1>
 <% @shows.each do |show| %>
   <section class="show" style="background: <%= show.tags.first ? show.tags.first.color : 'white' %>">
+    <div class="text">
     <h3><%= show.name %></h3>
     <p>Episodes: <%= show.episodes_watched %>/<%= show.episodes %></p>
     <p>Rating: <%= show.rating %>/10</p>
     <p>Tags: </p>
       <% show.tags.each do |tag| %>
-        <p style="background: <%= tag.color %>; border: solid;"><%= tag.name %></p>
+        <a href="/tags/<%= tag.id %>"><p style="background: <%= tag.color %>; border: solid;"><%= tag.name %></p></a>
       <% end %>
-    <a href="/shows/<%= show.id %>/edit">Edit Show</a>
+      <% if @acc %>
+        <a href="/shows/<%= show.id %>/edit">Edit Show</a>
+      <% end %>
+    </div>
   </section>
+<% end %>
+<% if @acc %>
+  <a href="/tags/<%= @tag.id %>/edit">Edit Tag</a>
 <% end %>

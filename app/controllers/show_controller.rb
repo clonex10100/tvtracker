@@ -17,6 +17,8 @@ class ShowController < ApplicationController
     @show.user = Helpers.current_user(session)
     unless params[:tag][:name].empty?
       tag = Tag.create(params[:tag])
+      tag.user = Helpers.current_user(session)
+      tag.save
       @show.tags << tag
     end
     @show.save
@@ -43,9 +45,18 @@ class ShowController < ApplicationController
     end
     unless params[:tag][:name].empty?
       tag = Tag.create(params[:tag])
+      tag.user = Helpers.current_user(session)
+      tag.save
       @show.tags << tag
       @show.save
     end
     redirect "/account"
+  end
+  get '/shows/:id/delete' do
+    show = Show.find(params[:id])
+    if show.user.id == session[:id]
+      show.delete
+    end
+    redirect '/'
   end
 end

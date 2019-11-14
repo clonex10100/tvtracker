@@ -11,6 +11,7 @@ class TagController < ApplicationController
   post '/tags' do
     @tag = Tag.create(params[:tag])
     @tag.user = Helpers.current_user(session)
+    @tag.save
     redirect '/'
   end
 
@@ -26,9 +27,18 @@ class TagController < ApplicationController
   get '/tags/:id' do
     @tag = Tag.find(params[:id])
     @shows = @tag.shows
+    @acc = @tag.user.id == session[:id]
     erb :'tags/show'
   end
 
+  get '/tags/:id/delete' do
+
+    tag = Tag.find(params[:id])
+    if tag.user.id == session[:id]
+      tag.delete
+    end
+    redirect '/tags'
+  end
   get '/tags/:id/edit' do
     @tag = Tag.find(params[:id])
     if @tag.user.id == session[:id]

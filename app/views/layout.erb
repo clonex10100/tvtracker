@@ -8,6 +8,19 @@
   <% if flash.has?(:message) %>
     <%= flash[:message] %>
   <% end %>
+  <% if Helpers.is_logged_in?(session) %>
+    <nav>
+      <a href="/account" class="left">My Shows</a>
+      <a href="/tags">My Tags</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  <% else %>
+    <nav>
+      <a href="/" class="left">Home</a>
+      <a href="/login">Login</a>
+      <a href="/signup">Signup</a>
+    </nav>
+  <% end %>
   <main>
     <%= yield %>
   </main>

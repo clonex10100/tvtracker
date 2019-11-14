@@ -1,14 +1,82 @@
+body {
+    background-color: white;
+}
 main {
     width: 80%;
-    margin: auto;
-    background: grey;
+    margin: 0px auto;
+    background-color: #eee8d5;
+    border: solid;
+    border-color: #657b83;
+    border-width: 1px;
 }
 
-section.show {
+h1, h3, p {
+    color: #657b83;
+}
+
+p.show {
+    border: solid;
+    border-color: #657b83;
+    border-width: 1px;
+}
+
+div.text {
+    background-color: #eee8d5;
+    border: solid;
+    border-color: #657b83;
+}
+
+div.text a.edit {
+    border: solid;
+    border-color: #657b83;
+    background-color: #268bd2;
+    color: #002b36;
+}
+
+h1 {
+    text-align: center;
+}
+
+section {
     background: white;
     margin: 1em 2em;
+    padding: 1em;
 }
 
-section.show * {
+section * {
     display: inline-block;
 }
+
+nav {
+    background-color: #eee8d5;
+	line-height: 420%;
+
+    border:solid;
+    border-color: #586e75; 
+
+    width:80%;
+	padding: 0 0;
+    margin: 1% auto;
+    
+    display: table;
+    table-layout: fixed;
+}
+
+nav a{
+    display: table-cell;
+
+    text-align:center;
+	text-decoration: none;
+    color: #839496;
+    border-left:solid;
+    border-color: #586e75; 
+}
+
+nav a:hover {
+    background-color: #586e75;
+}
+
+nav a.left {
+    border-left: none;
+}
+
