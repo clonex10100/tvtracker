@@ -2,9 +2,9 @@
 <form method="POST" action="/shows">
   <label>Show Name: <input type="text" name="show[name]"></label>
   <br>
-  <label>Number Of Episodes: <input type="number" name="show[episodes]"></label>
+  <label>Number Of Episodes: <input type="number" name="show[episodes]" min="1"></label>
   <br>
-  <label>Number Of Episodes Seen: <input type="number" name="show[episodes_watched]"></label>
+  <label>Number Of Episodes Seen: <input type="number" min="0" name="show[episodes_watched]"></label>
   <br>
   <label>Rating (From 1 to 10): <input type="number" name="show[rating]" min="1" max="10"></label>
   <br>

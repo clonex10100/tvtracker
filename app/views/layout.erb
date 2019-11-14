@@ -25,9 +25,9 @@
   <main>
     <%= yield %>
     <% if Helpers.is_logged_in?(session) %>
-      <a href="/tags/new"><h3>Add a new tag</h3><a>
       <a href="/shows/new"><h3>Add a new show</h3></a>
       <a href="/categories/new"><h3>Add a new category</h3></a>
+      <a href="/tags/new"><h3>Add a new tag</h3><a>
     <% end %>
   </main>
   </body>
