@@ -6,6 +6,7 @@ class ShowController < ApplicationController
       redirect "/login"
     end
     @tags = Helpers.current_user(session).tags
+    @categories = Helpers.current_user(session).categories
     erb :'shows/new'
   end
 
@@ -22,6 +23,12 @@ class ShowController < ApplicationController
       tag.save
       @show.tags << tag
     end
+    unless params[:category][:name].empty?
+      category = Category.create(params[:category])
+      category.user = Helpers.current_user(session)
+      category.save
+      @show.category = category
+    end
     @show.save
     redirect "/users/#{Helpers.current_user(session).slug}"
   end
@@ -31,6 +38,7 @@ class ShowController < ApplicationController
     @show = Show.find(params[:id])
     if @show.user.id == session[:id]
       @tags = Helpers.current_user(session).tags
+      @categories = Helpers.current_user(session).categories
       erb :'shows/edit'
     else
       flash[:message] = "You may only look at shows owned by you"
@@ -50,6 +58,13 @@ class ShowController < ApplicationController
       tag.user = Helpers.current_user(session)
       tag.save
       @show.tags << tag
+      @show.save
+    end
+    unless params[:category][:name].empty?
+      category = Category.create(params[:category])
+      category.user = Helpers.current_user(session)
+      category.save
+      @show.category = category
       @show.save
     end
     redirect "/account"

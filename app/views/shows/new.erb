@@ -8,6 +8,16 @@
   <br>
   <label>Rating (From 1 to 10): <input type="number" name="show[rating]" min="1" max="10"></label>
   <br>
+  <h3>Select Category</h3>
+  <% @categories.each do |category| %>
+    <label><input type="radio" name="show[category_id]" value="<%= category.id %>"><%= category.name %></label>
+    <br>
+  <% end %>
+  <h3>Or Create A new Category</h3>
+  <label>Category Name: <input type="text" name="category[name]"></label>
+  <br>
+  <label>Category Color: <input type="color" name="category[color]"></label>
+  <br>
   <h3>Select Tags</h3>
   <% @tags.each do |tag| %>
     <label><input type="checkbox" name="show[tag_ids][]" value="<%= tag.id %>"><%= tag.name %></label>

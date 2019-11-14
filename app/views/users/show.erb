@@ -1,19 +1,22 @@
 <h1><%= @user.name %></h1>
 <% @shows.each do |show| %>
-  <section class="show" style="background: <%= show.tags.first ? show.tags.first.color : 'white' %>">
-    <div class="text"> 
+  <section class="show" style="background: <%= show.category ? show.category.color : 'white' %>">
+    <div class="text">
     <h3><%= show.name %></h3>
     <p>Episodes: <%= show.episodes_watched %>/<%= show.episodes %></p>
     <p>Rating: <%= show.rating %>/10</p>
+    <% if show.category %>
+      <p>Category: </p><a href="/categories/<%= show.category.id %>"><p style="border: solid;"><%= show.category.name %></p></a>
+    <% end %>
     <p>Tags: </p>
       <% show.tags.each do |tag| %>
         <a href="/tags/<%= tag.id %>"><p style="background: <%= tag.color %>; border: solid;"><%= tag.name %></p></a>
       <% end %>
+    </div>
       <% if @acc %>
         <a href="/shows/<%= show.id %>/edit" class="edit">Edit Show</a>
         <a href="/shows/<%= show.id %>/delete" class="edit">Delete Show</a>
       <% end %>
-    </div>
   </section>
 <% end %>
 <% if @acc %>
