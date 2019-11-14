@@ -5,4 +5,5 @@ use UserController
 use ShowController
 use TagController
 use AccountController
+use CategoryController
 run ApplicationController

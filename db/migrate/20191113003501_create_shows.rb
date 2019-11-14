@@ -6,7 +6,7 @@ class CreateShows < ActiveRecord::Migration[6.0]
         t.integer :episodes_watched
         t.integer :rating
         t.integer :user_id
-        t.integer :catagory_id
+        t.integer :category_id
      end
   end
 end

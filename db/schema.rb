@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_11_14_013427) do
 
-  create_table "catagories", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "color"
     t.integer "user_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_013427) do
     t.integer "episodes_watched"
     t.integer "rating"
     t.integer "user_id"
-    t.integer "catagory_id"
+    t.integer "category_id"
   end
 
   create_table "tags", force: :cascade do |t|
