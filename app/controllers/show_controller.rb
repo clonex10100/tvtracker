@@ -11,10 +11,6 @@ class ShowController < ApplicationController
   end
 
   post '/shows' do
-    if params[:show][:episodes_watched] > params[:show][:episodes]
-      flash[:message] = "Episodes watched cannot be greater than total episodes"
-      redirect '/shows/new'
-    end
     @show = Show.create(params[:show])
     @show.user = Helpers.current_user(session)
     unless params[:tag][:name].empty?
