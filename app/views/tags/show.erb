@@ -1,5 +1,5 @@
 <h1><%= @tag.name %></h1>
-<% @shows.sort { |a, b| a.category.priority <=> b.category.priority }.each do |show| %>
+<% @shows.sort { |a, b| (a.category ? a.category.priority : 10) <=> (b.category ? b.category.priority : 10) }.each do |show| %>
   <section class="show" style="background: <%= show.category ? show.category.color : 'white' %>">
     <div class="text">
     <h3><%= show.name %></h3>
